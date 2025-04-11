@@ -1,26 +1,71 @@
+/* client/app/globals.css */
 @import "tailwindcss";
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md text-white font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700;
+  }
+  
+  .btn-success {
+    @apply bg-green-600 hover:bg-green-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-600 hover:bg-gray-700;
+  }
+  
+  .input {
+    @apply border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+  
+  .card {
+    @apply bg-white rounded-md shadow-md p-6;
+  }
+  
+
+  /* here i can change the color of the seat */
+  .seat {
+    @apply w-12 h-12 m-1 flex items-center justify-center rounded-md cursor-pointer text-sm font-medium transition-colors;
+  }
+  
+  .seat-available {
+    @apply bg-gray-200 hover:bg-blue-200;
+  }
+  
+  .seat-booked {
+    @apply bg-red-500 text-white cursor-not-allowed;
+  }
+  
+  .seat-selected {
+    @apply bg-blue-500 text-white;
+  }
 }
